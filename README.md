@@ -1,1 +1,2 @@
-# anotherbot
+# Anotherbot
+simple bot discord !
