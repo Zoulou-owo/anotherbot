@@ -29,6 +29,11 @@ fs.readdir("./Events/", (error, f) => {
       const event = f.split(".")[0];
 
     client.on(event, events.bind(null, client));
+    console.log(`${f} chargé !`)
   });
 
 });
+
+client.on('ready', () => {
+    console.log('Prêt et connecté sur ' + client.user.tag + ' !')
+})
