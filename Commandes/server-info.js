@@ -1,5 +1,11 @@
-const Discord = require('discord.js');
+const Discord = require("discord.js");
+const {PREFIX} = require("../config.js");
+const { MessageEmbed } = require('discord.js');
+
+
+
 exports.run = (client, message) => {
+
   const embed = new Discord.RichEmbed()
   .setAuthor(message.guild.name, message.guild.iconURL)
   .setColor(3447003)
@@ -15,3 +21,7 @@ exports.run = (client, message) => {
 
   message.channel.send({embed});
 };
+
+module.exports.help = {
+    name: 'server-info',
+  };
