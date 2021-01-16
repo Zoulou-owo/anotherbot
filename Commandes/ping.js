@@ -7,7 +7,7 @@ module.exports.run = (client, message, args) => {
 const ping = new MessageEmbed()
   
 .setTitle(`⏱️Pinging\.\.\.`)
-.setColor('ff000')
+.setColor('#c215e9')
 .setDescription(`**:ping_pong: Pong!\nLa latence est de : \`${Math.round(client.ws.ping)}ms\`. **`)
 .setThumbnail(message.author.avatarURL())
 .setTimestamp()
