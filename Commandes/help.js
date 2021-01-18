@@ -13,4 +13,7 @@ message.author.displayAvatarURL());
 
 return message.channel.send(embed) }
 
- module.exports.help = { name: 'help', };
+ module.exports.help = { 
+     name: 'help', 
+     alias: ["h"]
+ };

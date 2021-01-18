@@ -17,8 +17,22 @@ fs.readdir("./Commandes/", (error, f) => {
     console.log(`${f} commande chargée !`);
     client.commands.set(commande.help.name, commande);
 
+  if(commande.help.alias) {
+  if(commande.help.alias.length > 1) {
+    commande.help.alias.forEach((alias) => {
+      client.commands.set(alias, commande)
+      console.log(`| --> alias ${alias} de la commande ${commande.help.name} chargé !`)
+    })
+  }
+  else {
+    client.commands.set(commande.help.alias[0], commande)
+    console.log(`| --> alias ${commande.help.alias} de la commande ${commande.help.name} chargé !`)
+  }
+}
+
+})
+
   });
-});
 
 fs.readdir("./Events/", (error, f) => {
   if(error) console.log(error);

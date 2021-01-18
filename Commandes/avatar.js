@@ -31,5 +31,6 @@ module.exports.run = (client, message, args) => {
 
 
 module.exports.help = {
-    name: 'avatar',
-  };
+  name:  "avatar",
+  alias : ["pp", "pdp", "photo",  "Avatar",  "Pp", "Pdp", "Photo"]
+  }

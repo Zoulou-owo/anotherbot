@@ -14,9 +14,10 @@ const ping = new MessageEmbed()
 .setFooter(message.author.username, message.author.avatarURL());
 
 message.channel.send(ping);
-message.delete();
 }
 
+
 module.exports.help = {
-    name: 'ping',
-  };
+  name:  "Ping",
+  alias: ["ping", "ms"]
+}
