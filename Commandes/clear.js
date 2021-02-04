@@ -21,7 +21,7 @@ module.exports.run = async(client, message, args) => {
             .setColor("#dc143c")
             .setDescription(`**Action**: clear\n**Nombre de messages**: ${args[0]}\n**Salon**: ${message.channel}`)
             
-          message.channel.send(embed);
+          message.channel.send(embed).then(msg => { setTimeout(function() { msg.delete()}, 10000 )});
          } else {
            
         const embed2 = new MessageEmbed()
@@ -47,4 +47,3 @@ module.exports.run = async(client, message, args) => {
 module.exports.help = {
     name: 'clear',
   };
-  

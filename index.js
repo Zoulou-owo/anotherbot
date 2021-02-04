@@ -2,7 +2,17 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
 const {TOKEN, PREFIX} = require("./config.js");
-
+const DisTube = require('distube')
+const { CommandoClient } = require("discord.js-commando");
+client.distube = new DisTube(client, { searchSongs: true, emitNewSongOnly: true });
+client.distube
+    .on("playSong", (message, queue, song) => message.channel.send(
+        `Playing \`${song.name}\` - \`${song.formattedDuration}\`\nRequested by: ${song.user}`
+	))
+	.on("addSong", (message, queue, song) => message.channel.send(
+        `Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.user}`
+    ))
+    
 client.login(TOKEN);
 
 client.commands = new Discord.Collection();

@@ -2,39 +2,47 @@ const Discord = require("discord.js");
 const {PREFIX} = require("../config.js");
 
 module.exports.run = (client, message, args) => {
-    
-    const user = message.mentions.users.first();
-
-    if (user) {
-   
-      const member = message.guild.members.resolve(user);
-    
-      if (member) {
-      
-        member
-          .ban({
-            reason: 'They were bad!',
-          })
-          .then(() => {
-           
-            message.channel.send(`${user.tag} a été banni avec succès`);
-          })
-          .catch(err => {
-           
-            message.channel.send(`Je n\'ai pas les permission requise pour bannir ${user.tag}`);
-           
-            console.error(err);
-          });
-      } else {
-       
-        message.channel.send("That user isn't in this guild!");
-      }
-    } else {
-  
-      message.channel.send("Veuillez mentionner la personne a ban.");
+    if (!message.member.permissions.has('BAN_MEMBERS')) {
+        let embed4 = new Discord.MessageEmbed()
+        .setTitle(":x:Erreur!:x:")
+        .setColor("#ff0000")
+        .setDescription("Vous n'avez pas la permission `Bannir des membres`. Accès refusé.")
+        .setFooter("De AnotherBot pour " + message.author.username, message.author.displayAvatarURL());
+        message.channel.send(embed4)
+        return;
     }
-  };
+    var mention = message.mentions.members.first();
 
-module.exports.help = {
-    name: 'ban',
+    if(mention === undefined){
+        const embed = new Discord.MessageEmbed()
+    .setTitle(`❌Erreur!❌`)
+    .setColor(`#FF0000`)
+    .setDescription('Membre mal mentionné')
+    .setFooter("De AnotherBot pour " + message.author.username, message.author.displayAvatarURL());
+    return message.channel.send(embed)
+    
+    }else{
+        if(mention.bannable){
+            mention.ban();
+            const embed2 = new Discord.MessageEmbed()
+            .setTitle(`:white_check_mark: Réussi! :white_check_mark:`)
+            .setColor(`#FF0000`)
+            .setDescription(mention.displayName + ' à été banni avec succès')
+            .setFooter("De AnotherBot pour " + message.author.username, message.author.displayAvatarURL());
+            return message.channel.send(embed2)
+        }
+        else{
+        const embed3 = new Discord.MessageEmbed()
+            .setTitle(`❌Erreur!❌`)
+            .setColor(`#FF0000`)
+            .setDescription('Impossible de bannir ce membre')
+            .setFooter("De AnotherBot pour " + message.author.username, message.author.displayAvatarURL());
+            return message.channel.send(embed3)
+        }
+    }
+}
+
+    module.exports.help = {
+    name: 'Ban',
+    alias : ["ban"]
   };
