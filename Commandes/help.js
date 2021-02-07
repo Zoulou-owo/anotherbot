@@ -41,5 +41,9 @@ module.exports = {
       if (command.help.category.toLowerCase() !== 'moderation') return;
       text+=`\n\`${command.help.name}\` : ${command.help.utility}`
     }
+
+    message.channel.send(
+      new Discord.MessageEmbed().setColor('#FFC0CB').setDescription(text)
+    )
   }
 }

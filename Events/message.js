@@ -11,12 +11,13 @@ module.exports = async(client, message) => {
       if (!db.get(`xp.${message.guild.id}`)) db.set(`xp.${message.guild.id}`, {});
 
       let userxp = db.get(`xp.${message.guild.id}.${message.author.id}`)
+      if (!userxp) db.set(`xp.${message.guild.id}.${message.author.id}`, {lvl: 0, xp: 0})
 
       let xp = (10+(Math.round(Math.random()*20)))
       let totalxp = userxp.xp+xp
       let toLvlUp = 100+(userxp.lvl*1.5);
 
-      if (toLvlUp>=totalxp) {
+      if (toLvlUp<=totalxp) {
         message.channel.send(`Bravo, vous passez au niveau **${userxp.lvl+1}** !`);
 
         db.set(`xp.${message.guild.id}.${message.author.id}`, { xp: 0, lvl: (userxp.lvl+1)});
