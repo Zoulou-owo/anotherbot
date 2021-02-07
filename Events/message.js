@@ -27,7 +27,7 @@ module.exports = async(client, message) => {
     } else {
       const args = message.content.slice(PREFIX.length).trim().split(/ +/g);
       const commande = args.shift();
-      const cmd = client.commands.get(commande);
+      var cmd = client.commands.get(commande);
 
       if (!cmd) cmd = client.aliases.get(commande);
       if (!cmd) return;
