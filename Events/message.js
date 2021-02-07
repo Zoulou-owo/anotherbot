@@ -24,13 +24,13 @@ module.exports = async(client, message) => {
       } else {
         db.set(`xp.${message.guild.id}.${message.author.id}.xp`, totalxp);
       }
-    };
+    } else {
+      const args = message.content.slice(PREFIX.length).trim().split(/ +/g);
+      const commande = args.shift();
+      const cmd = client.commands.get(commande);
 
-    const args = message.content.slice(PREFIX.length).trim().split(/ +/g);
-    const commande = args.shift();
-    const cmd = client.commands.get(commande);
+      if (!cmd) return;
 
-    if (!cmd) return;
-
-    return cmd.run(client, message, args);
+      return cmd.run(client, message, args)
+    }
 };
