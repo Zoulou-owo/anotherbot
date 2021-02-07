@@ -6,7 +6,6 @@ module.exports = async(client, message) => {
 
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
-    if (!message.content.startsWith(PREFIX)) {
       if (!db.get(`xp`)) db.set(`xp`, {});
       if (!db.get(`xp.${message.guild.id}`)) db.set(`xp.${message.guild.id}`, {});
 
@@ -24,7 +23,7 @@ module.exports = async(client, message) => {
       } else {
         db.set(`xp.${message.guild.id}.${message.author.id}.xp`, totalxp);
       }
-    };
+    if(message.content.startsWith(PREFIX)) {
 
     const args = message.content.slice(PREFIX.length).trim().split(/ +/g);
     const commande = args.shift();
@@ -32,5 +31,6 @@ module.exports = async(client, message) => {
 
     if (!cmd) return;
 
-    return cmd.run(client, message, args);
+    return cmd.run(client, message, args)
+    }
 };
