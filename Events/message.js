@@ -15,7 +15,7 @@ module.exports = async(client, message) => {
 
       let xp = (10+(Math.round(Math.random()*20)))
       let totalxp = userxp.xp+xp
-      let toLvlUp = 100+(userxp.lvl*1.5);
+      let toLvlUp = 300+(userxp.lvl*1.5);
 
       if (toLvlUp<=totalxp) {
         message.channel.send(`Bravo, vous passez au niveau **${userxp.lvl+1}** !`);
