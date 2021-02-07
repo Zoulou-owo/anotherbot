@@ -12,10 +12,11 @@ client.distube
 	.on("addSong", (message, queue, song) => message.channel.send(
         `Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.user}`
     ))
-    
+
 client.login(TOKEN);
 
 client.commands = new Discord.Collection();
+client.aliases = new Discord.Collection();
 fs.readdir("./Commandes/", (error, f) => {
   if(error) console.log(error);
 
@@ -28,17 +29,11 @@ fs.readdir("./Commandes/", (error, f) => {
     client.commands.set(commande.help.name, commande);
 
   if(commande.help.alias) {
-  if(commande.help.alias.length > 1) {
     commande.help.alias.forEach((alias) => {
-      client.commands.set(alias, commande)
+      client.aliases.set(alias, commande)
       console.log(`| --> alias ${alias} de la commande ${commande.help.name} chargé !`)
     })
   }
-  else {
-    client.commands.set(commande.help.alias[0], commande)
-    console.log(`| --> alias ${commande.help.alias} de la commande ${commande.help.name} chargé !`)
-  }
-}
 
 })
 

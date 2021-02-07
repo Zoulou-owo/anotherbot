@@ -29,6 +29,7 @@ module.exports = async(client, message) => {
       const commande = args.shift();
       const cmd = client.commands.get(commande);
 
+      if (!cmd) cmd = client.aliases.get(commande);
       if (!cmd) return;
 
       return cmd.run(client, message, args)
