@@ -28,22 +28,26 @@ module.exports = {
     category: ''
   },
   run: async (client, message, args) => {
-    let text;
+    let text = '';
 
     text+=':fire: **Fun :**';
-    for (command in client.commands) {
+    client.commands.forEach(command => {
+      if (!command.help || !command.help.category || !command.help.name) return;
       if (command.help.category.toLowerCase() !== 'fun') return;
-      text+=`\n\`${command.help.name}\` : ${command.help.utility}`
-    }
+      text+=`\n\`${command.help.name}\` : ${command.help.utility || "*Non defini*"}`
+    })
 
     text+=`\n\n:tools: **Moderation :**`
-    for (command in client.commands) {
+    client.commands.forEach(command => {
+      if (!command.help || !command.help.category || !command.help.name) return;
       if (command.help.category.toLowerCase() !== 'moderation') return;
-      text+=`\n\`${command.help.name}\` : ${command.help.utility}`
-    }
+      text+=`\n\`${command.help.name}\` : ${command.help.utility || "*Non defini*"}`
+    })
+
+    console.log(text)
 
     message.channel.send(
-      new Discord.MessageEmbed().setColor('#FFC0CB').setDescription(text)
+      new Discord.MessageEmbed().setColor('#FFC0CB').setDescription("text")
     )
   }
 }
