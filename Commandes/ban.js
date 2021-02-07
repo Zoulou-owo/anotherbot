@@ -20,7 +20,7 @@ module.exports.run = (client, message, args) => {
     .setDescription('Membre mal mentionné')
     .setFooter("De AnotherBot pour " + message.author.username, message.author.displayAvatarURL());
     return message.channel.send(embed)
-    
+
     }else{
         if(mention.bannable){
             mention.ban();
@@ -44,5 +44,7 @@ module.exports.run = (client, message, args) => {
 
     module.exports.help = {
     name: 'Ban',
-    alias : ["ban"]
+    alias : ["ban"],
+    category: 'moderation',
+    utility: 'permet de bannir un utilisateur du serveur'
   };
