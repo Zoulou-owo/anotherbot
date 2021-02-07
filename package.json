@@ -14,7 +14,8 @@
     "moment": "^2.29.1",
     "node-opus": "^0.3.3",
     "opusscript": "0.0.7",
-    "superagent": "^6.1.0"
+    "superagent": "^6.1.0",
+    "quick.db": "^7.1.2"
   },
   "devDependencies": {},
   "scripts": {
