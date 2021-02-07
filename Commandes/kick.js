@@ -20,7 +20,7 @@ module.exports.run = (client, message, args) => {
     .setDescription('Membre mal mentionné')
     .setFooter("De AnotherBot pour " + message.author.username, message.author.displayAvatarURL());
     return message.channel.send(embed)
-    
+
     }else{
         if(mention.kickable){
             mention.kick();
@@ -44,5 +44,7 @@ module.exports.run = (client, message, args) => {
 
     module.exports.help = {
     name: 'Kick',
-    alias : ["kick"]
+    alias : ["kick"],
+    category: 'moderation',
+    utility: 'permet d\'expulser un membre du serveur'
   };

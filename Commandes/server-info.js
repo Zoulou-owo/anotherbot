@@ -25,6 +25,7 @@ exports.run = (client, message) => {
 
 module.exports.help = {
     name: 'server-info',
-    alias: ["serveur-info"]
-
+    alias: ["serveur-info"],
+    category: 'fun',
+    utility: 'permet d\'obtenir diverses informations concernant le serveur'
 }

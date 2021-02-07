@@ -12,12 +12,12 @@ module.exports.run = (client, message, args) => {
     .setImage(`${message.author.displayAvatarURL()}`)
     .setFooter("De AnotherBot pour " + message.author.username, message.author.displayAvatarURL());
     return message.channel.send(embed)
-    
+
     }
-    
-    
+
+
  const avatarList = message.mentions.users.map(user => {
-    
+
     const embed = new Discord.MessageEmbed()
     .setTimestamp()
     .setColor('#c215e9')
@@ -32,5 +32,7 @@ module.exports.run = (client, message, args) => {
 
 module.exports.help = {
   name:  "avatar",
-  alias : ["pp", "pdp", "photo",  "Avatar",  "Pp", "Pdp", "Photo"]
+  alias : ["pp", "pdp", "photo",  "Avatar",  "Pp", "Pdp", "Photo"],
+  category: 'fun',
+  utility: 'permet d\'afficher la photo de profil de quelqu\'un.'
   }
