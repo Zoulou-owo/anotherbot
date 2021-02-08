@@ -18,7 +18,7 @@ module.exports = async(client, message) => {
       let toLvlUp = 300+(userxp.lvl*1.5);
 
       if (toLvlUp<=totalxp) {
-        message.channel.send(`Bravo, vous passez au niveau **${userxp.lvl+1}** !`);
+        message.channel.send(`Bravo ${message.author}, vous passez au niveau **${userxp.lvl+1}** !`);
 
         db.set(`xp.${message.guild.id}.${message.author.id}`, { xp: 0, lvl: (userxp.lvl+1)});
       } else {
