@@ -20,5 +20,6 @@ module.exports.run = async(client, message, args) => {
 
 module.exports.help = {
     name: 'skip',
-    alias: ["s", "S", "sk", "Skip", "Sk", "SK", "zap"]
+    alias: ["s", "S", "sk", "Skip", "Sk", "SK", "zap"],
+    category: "music"
   };
