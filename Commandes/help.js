@@ -51,7 +51,6 @@ module.exports = {
       new Discord.MessageEmbed().setColor('#FFC0CB').setDescription(text)
     )
   }
- }
  else {
   let commande = client.commands.get(args[0])
   if(!commande) return message.channel.send("Commande inexistante !")
