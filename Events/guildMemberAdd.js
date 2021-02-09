@@ -50,7 +50,17 @@ module.exports = async (client, member) => {
     let image = new MessageAttachment(canvas.toBuffer(), 'canvas.png');
 
     let role = guild.roles.cache.get(db.get(`config.${guild.id}.captchaRole`));
-    if (!role) guild.roles.create({data:{ name: 'Non verifie', color: 'GRAY'}}).then(role => db.set(`config.${guild.id}.captchaRole`, role.id));
+    if (!role) {
+      guild.roles.create({data:{ name: 'Non verifie', color: 'GRAY'}}).then(role => db.set(`config.${guild.id}.captchaRole`, role.id));
+
+      guild.channels.forEach(channel => {
+          channel.createOverwrite(role, {
+            VIEW_CHANNEL: false,
+            SEND_MESSAGES: false,
+            READ_MESSAGE_HISTORY: false
+          })
+      })
+    }
 
     let channel = client.channels.cache.get(db.get(`config.${guild.id}.captchaChannel`))
     if (!channel) guild.channels.create('captcha').then(channel => db.set(`config.${guild.id}.captchaChannel`, channel.id));
