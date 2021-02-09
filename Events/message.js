@@ -3,7 +3,10 @@ const {PREFIX} = require("../config.js");
 const db = require('quick.db')
 
 module.exports = async(client, message) => {
-
+    const botMention = new RegExp(`^<@!?${client.user.id}>( |)$`);
+    if (message.content.match(botMention)) {
+	    message.channel.send("Bonjour ! Mon prefix est `.` ! Faites `.help` pour voir ma liste de commandes ! (en cours de dev)")
+	}
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
     if (!message.content.startsWith(PREFIX)) {
