@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const {PREFIX} = require("../config.js");
+const config = require("../config.js");
 
 module.exports.run = (client, message, args) => {
 
