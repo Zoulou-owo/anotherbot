@@ -43,8 +43,9 @@ module.exports.run = (client, message, args) => {
 }
 
     module.exports.help = {
-    name: 'Kick',
-    alias : ["kick"],
+    name: 'kick',
+    alias : ["Kick"],
     category: 'moderation',
-    utility: 'permet d\'expulser un membre du serveur'
+    utility: 'permet d\'expulser un membre du serveur',
+    usage: "`.kick <@membre>"
   };
