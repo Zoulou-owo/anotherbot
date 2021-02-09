@@ -28,6 +28,7 @@ module.exports = {
     category: ''
   },
   run: async (client, message, args) => {
+   if(!args[0]) {
     let text = '';
 
     text+=':fire: **Fun :**';
@@ -50,4 +51,16 @@ module.exports = {
       new Discord.MessageEmbed().setColor('#FFC0CB').setDescription(text)
     )
   }
+ }
+ else {
+  let commande = client.commands.get(args[0])
+  if(!commande) return message.channel.send("Commande inexistante !")
+  let embed = new Discord.MessageEmbed()
+  .setTitle(`Aide de la commande \`${commande.help.name}\` :`)
+  .addField("Usage :", commande.help.usage || "Aucun usage défini")
+  .addField("Description :", commande.help.utility || "Aucune description définie")
+  .addField("Catégorie :", commande.help.category || "Aucune catégorie précisée")
+  .setColor("RANDOM")
+  message.channel.send(embed)
+ }
 }
