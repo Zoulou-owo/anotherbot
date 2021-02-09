@@ -52,7 +52,7 @@ module.exports = {
     )
   }
  else {
-  let commande = client.commands.get(args[0])
+  let commande = client.commands.get(args[0].toLowerCase())
   if(!commande) return message.channel.send("Commande inexistante !")
   let embed = new Discord.MessageEmbed()
   .setTitle(`Aide de la commande \`${commande.help.name}\` :`)
