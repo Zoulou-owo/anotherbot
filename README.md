@@ -1,5 +1,5 @@
 # Anotherbot
-simple bot discord !
+Simple bot discord !
 
 ## Description :
 AnotherBot est un bot Discord multifonction en cours de développement.
