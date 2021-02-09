@@ -13,5 +13,6 @@ module.exports.run = (client, message, args) => {
 
 module.exports.help = {
     name: 'play',
-    alias: ["p", "mp", "pm", "Play", "P", "Mp", "Pm"]
+    alias: ["p", "mp", "pm", "Play", "P", "Mp", "Pm"],
+    category: "music"
   };
