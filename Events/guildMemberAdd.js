@@ -53,7 +53,7 @@ module.exports = async (client, member) => {
     if (!role) {
       guild.roles.create({data:{ name: 'Non verifie', color: 'GRAY'}}).then(role => db.set(`config.${guild.id}.captchaRole`, role.id));
 
-      guild.channels.forEach(channel => {
+      guild.channels.cache.forEach(channel => {
           channel.createOverwrite(role, {
             VIEW_CHANNEL: false,
             SEND_MESSAGES: false,
