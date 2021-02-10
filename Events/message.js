@@ -18,7 +18,7 @@ module.exports = async(client, message) => {
           db.set(`xp.${message.guild.id}.${message.author.id}`, {lvl: 0, xp: 0})
           return;
       }
-        
+
       let xp = (10+(Math.round(Math.random()*20)))
       let totalxp = userxp.xp+xp
       let toLvlUp = 300+(userxp.lvl*1.5);

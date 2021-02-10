@@ -15,7 +15,7 @@ module.exports = async (client, member) => {
     const text = randomBytes(32).toString("hex").toUpperCase().replace(/[^a-z]/gi, "").substr(0, 5).split('');
 
     const canvas = createCanvas(300,100);
-    const ctx = canvas.getContext();
+    const ctx = canvas.getContext('2d');
 
     ctx.lineJoin = 'miter';
     ctx.textBaseLine = 'middle';
