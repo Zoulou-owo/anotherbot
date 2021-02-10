@@ -8,7 +8,6 @@ exports.run = (client, message) => {
       const result = eval(content.replace('.eval ', ''))
       channel.send(result)
     }
-  })
 }
 
 module.exports.help = {
